@@ -1,12 +1,12 @@
-# vny
+# @screaming/froggo
 
-> Ḁ̸͑r̷̳͗ē̸̯ ̶̰̚ỹ̵̗o̴̭̅u̵͚͗ ̷̼̉h̷̤͂a̵͍͗v̶̪͗ĭ̷̺n̶̯̒ġ̵̰ ̵̛̘f̸̢̍u̷̖̇ǹ̵͓ ̵͜͝ỳ̶̼ė̸̪t̴̬́?̴͍̋
+> Project scaffolder for Screaming Frog projects 🐸
 
-<a href="https://npmjs.com/package/vny">
-  <img src="https://img.shields.io/npm/v/vny" alt="npm version">
+<a href="https://npmjs.com/package/@screaming/froggo">
+  <img src="https://img.shields.io/npm/v/@screaming/froggo" alt="npm version">
 </a>
-<a href="https://npmjs.com/package/vny">
-  <img src="https://img.shields.io/npm/l/vny" alt="license">
+<a href="https://npmjs.com/package/@screaming/froggo">
+  <img src="https://img.shields.io/npm/l/@screaming/froggo" alt="license">
 </a>
 
 ## Installation
@@ -15,20 +15,26 @@ Install globally with your favourite package manager:
 
 ```sh
 # yarn
-yarn global add vny
+yarn global add @screaming/froggo
 
 # pnpm
-pnpm install --global vny
+pnpm install --global @screaming/froggo
 
 # npm
-npm install --global vny
+npm install --global @screaming/froggo
 ```
 
-Create a new project:
+Inisialise new project:
 
 ```sh
-vny new my-project
+frog new <project-name>
+# or
+froggo new <project-name>
 ```
+
+## Documentation
+
+Full documentation is available [here](https://example.com).
 
 ## License
 
