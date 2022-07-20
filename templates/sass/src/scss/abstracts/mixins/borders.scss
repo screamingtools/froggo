@@ -1,0 +1,61 @@
+@mixin border($style, $sides...) {
+  @if ($style != '') {
+    @if ($sides == '') {
+      border: $style;
+    } @else {
+      @each $side in $sides {
+        @if (
+          $side ==
+            'top' or
+            $side ==
+            'right' or
+            $side ==
+            'bottom' or
+            $side ==
+            'left'
+        ) {
+          border-#{$side}: $style;
+        }
+      }
+    }
+  }
+}
+
+@mixin round-corners($radius, $sides...) {
+  @if ($radius != '') {
+    @if ($sides == '') {
+      border-radius: $radius;
+    } @else {
+      @each $side in $sides {
+        @if ($side == 'top' or $side == 'bottom') {
+          border-#{$side}-left-radius: $radius;
+          border-#{$side}-right-radius: $radius;
+        }
+        @if ($side == 'left' or $side == 'right') {
+          border-top-#{$side}-radius: $radius;
+          border-bottom-#{$side}-radius: $radius;
+        }
+        @if (
+          $side ==
+            'bottom-right' or
+            $side ==
+            'bottom-left' or
+            $side ==
+            'top-left' or
+            $side ==
+            'top-right'
+        ) {
+          border-#{$side}-radius: $radius;
+          border-#{$side}-right-radius: $radius;
+        }
+      }
+    }
+  }
+}
+
+@mixin roundy($dimension, $border: null) {
+  width: $dimension;
+  height: $dimension;
+  border: $border;
+  border-radius: 50%;
+}

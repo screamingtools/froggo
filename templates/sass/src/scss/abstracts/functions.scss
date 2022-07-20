@@ -1,0 +1,6 @@
+@use 'sass:math';
+
+// use tailwind's scale in scss (assuming 1rem = 16px)
+@function size($s) {
+  @return math.div($s, 4) * 1rem;
+}

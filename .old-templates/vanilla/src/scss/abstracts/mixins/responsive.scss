@@ -1,0 +1,176 @@
+@mixin sm {
+  @media screen and (min-width: $screen-sm) {
+    @content;
+  }
+}
+
+@mixin md {
+  @media screen and (min-width: $screen-md) {
+    @content;
+  }
+}
+
+@mixin lg {
+  @media screen and (min-width: $screen-lg) {
+    @content;
+  }
+}
+
+@mixin xl {
+  @media screen and (min-width: $screen-xl) {
+    @content;
+  }
+}
+
+@mixin until-sm {
+  @media screen and (max-width: $screen-sm) {
+    @content;
+  }
+}
+
+@mixin until-md {
+  @media screen and (max-width: $screen-md) {
+    @content;
+  }
+}
+
+@mixin until-lg {
+  @media screen and (max-width: $screen-lg) {
+    @content;
+  }
+}
+
+@mixin until-xl {
+  @media screen and (max-width: $screen-xl) {
+    @content;
+  }
+}
+
+// width
+
+@mixin respond-to-min($screen, $media: 'all') {
+  $value: getValue($screen) + 1;
+
+  @media #{$media} and (min-width: $value) {
+    @content;
+  }
+}
+
+@mixin respond-to-max($screen, $media: 'all') {
+  $value: getValue($screen);
+
+  @media #{$media} and (max-width: $value) {
+    @content;
+  }
+}
+
+@mixin respond-min-to-max($screen-min, $screen-max, $media: 'all') {
+  $min-value: getValue($screen-min) + 1;
+  $max-value: getValue($screen-max);
+
+  @media #{$media} and (min-width: $min-value) and (max-width: $max-value) {
+    @content;
+  }
+}
+
+// height
+
+@mixin h-respond-to-min($screen, $media: 'all') {
+  $value: getValue($screen) + 1;
+
+  @media #{$media} and (min-height: $value) {
+    @content;
+  }
+}
+
+@mixin h-respond-to-max($screen, $media: 'all') {
+  $value: getValue($screen);
+
+  @media #{$media} and (max-height: $value) {
+    @content;
+  }
+}
+
+@mixin h-respond-min-to-max($screen-min, $screen-max, $media: 'all') {
+  $min-value: getValue($screen-min) + 1;
+  $max-value: getValue($screen-max);
+
+  @media #{$media} and (min-height: $min-value) and (max-height: $max-value) {
+    @content;
+  }
+}
+
+// width and height
+
+@mixin wh-respond-to-min($screen-w, $screen-h, $media: 'all') {
+  $value-w: getValue($screen-w) + 1;
+  $value-h: getValue($screen-h) + 1;
+
+  @media #{$media} and (min-width: $value-w) and (min-height: $value-h) {
+    @content;
+  }
+}
+
+@mixin wh-respond-to-max($screen-w, $screen-h, $media: 'all') {
+  $value-w: getValue($screen-w);
+  $value-h: getValue($screen-h);
+
+  @media #{$media} and (max-width: $value-w) and (max-height: $value-h) {
+    @content;
+  }
+}
+
+// width or height
+
+@mixin w-or-h-respond-to-min($screen-w, $screen-h, $media: 'all') {
+  $value-w: getValue($screen-w) + 1;
+  $value-h: getValue($screen-h) + 1;
+
+  @media #{$media} and (min-width: $value-w), #{$media} and (min-height: $value-h) {
+    @content;
+  }
+}
+
+@mixin w-or-h-respond-to-max($screen-w, $screen-h, $media: 'all') {
+  $value-w: getValue($screen-w);
+  $value-h: getValue($screen-h);
+
+  @media #{$media} and (max-width: $value-w), #{$media}  and (max-height: $value-h) {
+    @content;
+  }
+}
+
+// orientation
+
+@mixin respond-to-orientation($orientation: 'portrait', $media: 'all') {
+  @media #{$media} and (orientation: $orientation) {
+    @content;
+  }
+}
+
+// generic media queries
+/* Note: maximum if smallest value, minimum otherwise */
+
+@mixin mq($break) {
+  $value: map-get($screens, $break);
+  $sm: map-get($screens, 'sm');
+
+  @if $value == null {
+    @error "`#{$break}` is not a valid screen name.";
+  } @else if $value < $sm {
+    @media (max-width: $value) {
+      @content;
+    }
+  } @else {
+    @media (min-width: $value) {
+      @content;
+    }
+  }
+}
+
+// responsive ratio
+
+@mixin responsive-ratio($x, $y) {
+  $padding: unquote(($y / $x) * 100 + '%');
+  padding-top: $padding;
+}

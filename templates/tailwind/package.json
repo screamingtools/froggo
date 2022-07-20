@@ -1,0 +1,37 @@
+{
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "start": "vite",
+    "prebuild": "rimraf dist",
+    "build": "vite-ssg build",
+    "postbuild": "rimraf dist/ssr-manifest.json dist/.gitkeep"
+  },
+  "dependencies": {
+    "@screaming/share": "^0.1.0",
+    "@screaming/table": "^0.1.0",
+    "@screaming/use": "^0.1.0",
+    "@screaming/utils": "^0.1.0",
+    "@vueuse/head": "^0.7.6",
+    "vue": "^3.2.37"
+  },
+  "devDependencies": {
+    "@rushstack/eslint-patch": "^1.1.4",
+    "@vitejs/plugin-vue": "^3.0.1",
+    "@vue/compiler-sfc": "^3.2.37",
+    "@vue/eslint-config-prettier": "^7.0.0",
+    "@vue/eslint-config-typescript": "^11.0.0",
+    "autoprefixer": "^10.4.7",
+    "eslint": "^8.20.0",
+    "eslint-plugin-vue": "^9.2.0",
+    "postcss": "^8.4.14",
+    "prettier": "^2.7.1",
+    "rimraf": "^3.0.2",
+    "tailwindcss": "^3.1.6",
+    "typescript": "^4.7.4",
+    "unplugin-vue-components": "^0.21.1",
+    "vite": "^3.0.2",
+    "vite-ssg": "^0.20.2",
+    "vue-tsc": "^0.38.8"
+  }
+}

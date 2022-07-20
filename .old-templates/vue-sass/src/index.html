@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- TODO: Add metadata (https://www.screamingprojects.com/tools/metadata-generator) -->
+    <!-- TODO: Add favicons -->
+    <!-- TODO: Add GA / GTM -->
+  </head>
+  <body>
+    <!-- built files will be auto injected -->
+    <div id="app"></div>
+
+    <!-- ie prompt -->
+    <div class="ie-prompt">
+      <div class="ie-prompt__container">
+        <div class="ie-prompt__card">
+          <div class="ie-prompt__card-container">
+            <h2 class="ie-prompt__title">Unsupported Browser</h2>
+
+            <p class="ie-prompt__message">
+              We've detected that you're using a browser that we don't support.
+              <br />
+              Please ensure you're using the latest version of your browser, or
+              try using one of the browsers listed below.
+            </p>
+
+            <ul class="ie-prompt__list">
+              <li>
+                <a
+                  class="ie-prompt__link"
+                  href="https://www.google.co.uk/chrome/"
+                  target="_blank"
+                  rel="noreferrer noopener"
+                >
+                  Google Chrome
+                </a>
+              </li>
+              <li>
+                <a
+                  class="ie-prompt__link"
+                  href="https://www.mozilla.org/en-GB/firefox/new/"
+                  target="_blank"
+                  rel="noreferrer noopener"
+                >
+                  Mozilla Firefox
+                </a>
+              </li>
+              <li>
+                <a
+                  class="ie-prompt__link"
+                  href="https://www.microsoft.com/en-us/edge/"
+                  target="_blank"
+                  rel="noreferrer noopener"
+                >
+                  Microsoft Edge
+                </a>
+              </li>
+              <li>
+                <a
+                  class="ie-prompt__link"
+                  href="https://www.apple.com/uk/safari/"
+                  target="_blank"
+                  rel="noreferrer noopener"
+                >
+                  Safari (MacOS)
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script nomodule>
+      document.body.classList.add('ie')
+    </script>
+
+    <script type="module">
+      document.querySelector('.ie-prompt').remove()
+    </script>
+
+    <script src="/main.ts" type="module"></script>
+  </body>
+</html>

@@ -1,0 +1,66 @@
+.froggo {
+  background-color: $grey-50;
+  padding: 0 size(4);
+  min-height: 100vh;
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+  }
+
+  &__card {
+    box-shadow: 0 1px 2px 0 rgba($black, 0.05);
+    border-radius: 0.25rem;
+    background-color: $white;
+    padding: size(8);
+    width: 100%;
+    max-width: 36rem;
+  }
+
+  &__card-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    & > * + * {
+      margin-top: size(4);
+    }
+  }
+
+  &__logo {
+    width: size(36);
+
+    @include sm {
+      width: size(48);
+    }
+  }
+
+  &__title {
+    text-align: center;
+    font-size: 1.875rem;
+    line-height: 2.25rem;
+    font-weight: $font-medium;
+
+    @include sm {
+      font-size: 2.25rem;
+      line-height: 2.5rem;
+    }
+  }
+
+  &__message {
+    text-align: center;
+    color: $grey-400;
+    font-weight: $font-medium;
+  }
+
+  &__link {
+    font-weight: $font-semibold;
+    text-decoration: underline;
+    &:hover {
+      color: $grey-500;
+    }
+  }
+}

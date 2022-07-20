@@ -1,0 +1,18 @@
+$screen-xs: 320px !default;
+$screen-sm: 640px !default;
+$screen-md: 768px !default;
+$screen-lg: 1024px !default;
+$screen-xl: 1280px !default;
+
+$iPhone5: 320px !default;
+$iPhone6: 375px !default;
+$iPad: 768px !default;
+$iPadPro: 1024px !default;
+
+$screens: (
+  xs: $screen-xs,
+  sm: $screen-sm,
+  md: $screen-md,
+  lg: $screen-lg,
+  xl: $screen-xl
+);

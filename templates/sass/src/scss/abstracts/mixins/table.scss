@@ -1,0 +1,123 @@
+@mixin htl($boolean: true) {
+  [data-htl='#{$boolean}'] & {
+    @content;
+  }
+}
+
+@mixin singleSortIndicator($sortIndicatorElement: true) {
+  &:after {
+    content: '';
+    display: none;
+
+    @content;
+
+    @include htl(true) {
+      transform: rotateX(0);
+    }
+    @include htl(false) {
+      transform: rotateX(180deg);
+    }
+  }
+
+  @include matchSortprop() {
+    &:after {
+      display: block;
+    }
+  }
+}
+
+@mixin doubleSortIndicator($imageHTL, $imageLTH, $imagePath: '../assets/img/') {
+  &:before,
+  &:after {
+    content: '';
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    @content;
+  }
+
+  @include mismatchSortprop() {
+    &.table__sort-indicator,
+    &:after,
+    &:before {
+      display: none !important;
+    }
+  }
+
+  &:before {
+    background-image: url('#{$imagePath}#{$imageLTH}');
+    @include htl() {
+      display: none;
+    }
+  }
+  &:after {
+    background-image: url('#{$imagePath}#{$imageHTL}');
+    @include htl(false) {
+      display: none;
+    }
+  }
+}
+
+// table matches
+
+@mixin matchCurrent($cols: $props-primary) {
+  @include match(current, '&.table__cell', $cols...) {
+    @content;
+  }
+}
+
+@mixin matchDropdown($cols: $props-primary) {
+  @include match(current, '&.table__dropdown-list-item', $cols...) {
+    @content;
+  }
+}
+
+@mixin matchSortprop($cols: $props-primary) {
+  @include match(sortprop, false, $cols...) {
+    @content;
+  }
+}
+
+@mixin mismatchCurrent($cols: $props-primary) {
+  @include mismatch(current, '&.table__cell', $cols...) {
+    @content;
+  }
+}
+
+@mixin mismatchDropdown($cols: $props-primary) {
+  @include mismatch(current, '&.table__dropdown-list-item', $cols...) {
+    @content;
+  }
+}
+
+@mixin mismatchSortprop($cols: $props-primary) {
+  @include mismatch(sortprop, false, $cols...) {
+    @content;
+  }
+}
+
+@mixin matchSortpropAndHTL(
+  $htl: true,
+  $attr: sortprop,
+  $pre: false,
+  $match...
+) {
+  @if $props-primary and length($match) == 0 {
+    $match: $props-primary;
+  }
+
+  @each $m in $match {
+    [data-htl='#{$htl}'][data-#{$attr}='#{$m}'] & {
+      @if $pre {
+        #{$pre}--#{$m} {
+          @content;
+        }
+      } @else {
+        &--#{$m} {
+          @content;
+        }
+      }
+    }
+  }
+}

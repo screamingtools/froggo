@@ -1,0 +1,23 @@
+.container {
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+
+  @include sm {
+    max-width: $screen-sm;
+  }
+
+  @include md {
+    max-width: $screen-md;
+  }
+
+  &:not(.narrow) {
+    @include lg {
+      max-width: $screen-lg;
+    }
+
+    @include xl {
+      max-width: $screen-xl;
+    }
+  }
+}

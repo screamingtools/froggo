@@ -1,0 +1,13 @@
+$screen-xs: 320px !default;
+$screen-sm: 640px !default;
+$screen-md: 768px !default;
+$screen-lg: 1024px !default;
+// $screen-xl: 1280px !default;
+
+$screens: (
+  xs: $screen-xs,
+  sm: $screen-sm,
+  md: $screen-md,
+  lg: $screen-lg
+  // xl: $screen-xl
+);

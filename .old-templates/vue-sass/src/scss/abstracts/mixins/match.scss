@@ -1,0 +1,61 @@
+$props-primary: false !default;
+$props-secondary: false !default;
+$props-all: join($props-primary, $props-secondary);
+
+@mixin match($attr: current, $pre: false, $match...) {
+  @if $props-primary and length($match) == 0 {
+    $match: $props-primary;
+  }
+
+  @each $m in $match {
+    [data-#{$attr}='#{$m}'] & {
+      @if $pre {
+        #{$pre}--#{$m} {
+          @content;
+        }
+      } @else {
+        &--#{$m} {
+          @content;
+        }
+      }
+    }
+  }
+}
+
+@mixin matchAttr($parentAttr: state, $childAttr: changestate, $match...) {
+  @if $props-primary and length($match) == 0 {
+    $match: $props-primary;
+  }
+
+  @each $m in $match {
+    [data-#{$parentAttr}='#{$m}'] & {
+      &[data-#{$childAttr}='#{$m}'] {
+        @content;
+      }
+    }
+  }
+}
+
+@mixin mismatch($attr: current, $pre: false, $match...) {
+  @if $props-primary and length($match) == 0 {
+    $match: $props-primary;
+  }
+
+  @each $m in $match {
+    [data-#{$attr}='#{$m}'] & {
+      @each $n in $match {
+        @if ($n != $m) {
+          @if $pre {
+            #{$pre}--#{$n} {
+              @content;
+            }
+          } @else {
+            &--#{$n} {
+              @content;
+            }
+          }
+        }
+      }
+    }
+  }
+}
